@@ -25,6 +25,13 @@ jobs:
     - name: Build extension
       run: npm run build
       
+    - name: Package extension files
+      run: |
+        cp public/manifest.json dist/
+        cp public/content.js dist/
+        cp public/content.css dist/
+        cp public/icon*.png dist/
+      
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
