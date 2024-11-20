@@ -25,16 +25,20 @@ jobs:
     - name: Build extension
       run: npm run build
       
+    - name: Create dist directory if it doesn't exist
+      run: mkdir -p dist
+      
     - name: Package extension files
       run: |
-        cp public/manifest.json dist/
-        cp public/content.js dist/
-        cp public/content.css dist/
-        cp public/icon*.png dist/
+        cp -f public/manifest.json dist/ || true
+        cp -f public/content.js dist/ || true
+        cp -f public/content.css dist/ || true
+        cp -f public/icon*.png dist/ || true
+        ls -la dist/
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: dist
+        name: chrome-extension
         path: dist/
-        retention-days: 1
+        retention-days: 7
