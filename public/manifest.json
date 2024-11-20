@@ -4,6 +4,9 @@
   "version": "1.0",
   "description": "A subtitle viewer and dictation tool for language learning",
   "permissions": ["activeTab", "storage"],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' https://cdn.gpteng.co; object-src 'self'"
+  },
   "action": {
     "default_popup": "index.html",
     "default_icon": {
